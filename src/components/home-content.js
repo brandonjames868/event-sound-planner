@@ -1,91 +1,93 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import dj_icon from "../assets/img/dj-icon.png";
+import list_icon from "../assets/img/list-icon.png";
+import client_icon from "../assets/img/client-icon.png";
+import info_icon from "../assets/img/personal-info-icon.svg";
+import Usercard from "./usercard";
+
+const fakeUsers = [
+  { id: 1, firstName: 'Brandon', lastName: 'James', email: 'king_james@test.com', alias: 'King James', image: 'https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png' },
+  { id: 2, firstName: 'Trivelle', lastName: 'Blake', email: 'project_b@test.com', alias: 'Project B', image: 'https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png' },
+  { id: 3, firstName: 'Emmanuel', lastName: 'Sammy', email: 'jus_sammy@test.com', alias: 'Jus Sammy', image: 'https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png' },
+  { id: 4, firstName: 'Marcus', lastName: 'Williams', email: 'marcus@test.com', alias: 'Marcus Williams', image: 'https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png' },
+
+];
+
 
 const HomeContent = () => (
-  <div className="next-steps">
-    <h2 className="my-5 text-center">What can I do next?</h2>
+  <>
+    {/* Section 1 */}
+    <div className="next-steps mb-4 pt-1">
+      <h2 className="my-5 text-center">User Portals</h2>
 
-    <div className="row">
-      <div className="col-md-5 mb-4">
-        <h6 className="mb-3">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://auth0.com/docs/connections"
-          >
-            <i className="fas fa-link mr-2" />
-            Configure other identity providers
-          </a>
-        </h6>
-        <p>
-          Auth0 supports social providers as Facebook, Twitter, Instagram and
-          100+, Enterprise providers as Microsoft Office 365, Google Apps,
-          Azure, and more. You can also use any OAuth2 Authorization Server.
-        </p>
+      <div className="row">
+        <div className="col-sm-4 ">
+          <div className="card shadow rounded-lg border-1">
+            <img class="card-img-top dj-icon" src={client_icon} alt="Card image cap" />
+            <div className="card-body">
+              <h5 className="card-title text-center">Clients</h5>
+              <p className="card-text">Register as a user/client. Edit your user profile. Upload events.</p>
+              <a href="#" className="btn btn-primary btn-block rounded gradient-bg text-x2">Enter</a>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-4 ">
+          <div className="card shadow rounded-lg border-1">
+            <img class="card-img-top dj-icon" src={list_icon} alt="Card image cap" />
+            <div className="card-body">
+              <h5 className="card-title text-center">Directory</h5>
+              <p className="card-text">View DJ profiles and rates. Book DJ's and/or Hosts for events.</p>
+              <NavLink
+                to="/dj-list"
+                exact
+              >
+                <div className="btn btn-primary rounded btn-block gradient-bg text-x2">Enter</div>
+              </NavLink>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-4 ">
+          <div className="card shadow rounded-lg border-1">
+            <img class="card-img-top dj-icon" src={dj_icon} alt="Card image cap" />
+            <div className="card-body">
+              <h5 className="card-title text-center">DJs</h5>
+              <p className="card-text">Register as a DJ/Host. Edit or update your DJ profile. Accept event requests.</p>
+              <a href="#" className="btn btn-primary rounded btn-block gradient-bg text-x2">Enter</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="col-md" />
-
-      <div className="col-md-5 mb-4">
-        <h6 className="mb-3">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://auth0.com/docs/multifactor-authentication"
-          >
-            <i className="fas fa-link mr-2" />
-            Enable Multi-Factor Authentication
-          </a>
-        </h6>
-        <p>
-          Add an extra layer of security by enabling Multi-factor
-          Authentication, requiring your users to provide more than one piece of
-          identifying information. Push notifications, authenticator apps, SMS,
-          and DUO Security are supported.
-        </p>
-      </div>
+      <img className="info-icon" src={info_icon} alt="Planning Icon" />
     </div>
 
-    <div className="row">
-      <div className="col-md-5 mb-4">
-        <h6 className="mb-3">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://auth0.com/docs/anomaly-detection"
-          >
-            <i className="fas fa-link mr-2" />
-            Anomaly Detection
-          </a>
-        </h6>
-        <p>
-          Auth0 can detect anomalies and stop malicious attempts to access your
-          application. Anomaly detection can alert you and your users of
-          suspicious activity, as well as block further login attempts.
-        </p>
+    {/* Section 2 */}
+    <div className="next-steps mb-4 pt-1 mt-5">
+      <h2 className="my-5 text-center">Top Rated DJ's and Hosts</h2>
+      <div className="row">
+        <div className="col">
+          <Usercard users={fakeUsers} />
+        </div>
       </div>
 
-      <div className="col-md" />
-
-      <div className="col-md-5 mb-4">
-        <h6 className="mb-3">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://auth0.com/docs/rules"
-          >
-            <i className="fas fa-link mr-2" />
-            Learn About Rules
-          </a>
-        </h6>
-        <p>
-          Rules are JavaScript functions that execute when a user authenticates
-          to your application. They run once the authentication process is
-          complete, and you can use them to customize and extend Auth0's
-          capabilities.
-        </p>
-      </div>
+      {/* <img className="info-icon" src={info_icon} alt="Planning Icon" /> */}
     </div>
-  </div>
-);
+
+    {/* Section 3 */}
+    <div className="next-steps mb-4 pt-1 mt-5">
+      <h2 className="my-5 text-center">Top Rated Equipment Suppliers</h2>
+
+      <div className="row">
+        <div className="col">
+
+        </div>
+      </div>
+
+      <img className="info-icon" src={info_icon} alt="Planning Icon" />
+    </div>
+
+
+  </>);
 
 export default HomeContent;
