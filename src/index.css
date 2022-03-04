@@ -129,6 +129,56 @@ background: linear-gradient(to right, #6FB1FC, #4364F7, #0052D4); /* W3C, IE 10+
   display: block;
 }
 
+.rated-dj-icon {
+  width: 25%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1em;
+}
+
+.equipment-icon {
+  width: 25%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 2em;
+}
+
 .tr-dj-card {
-  
+  border-radius: 10%;
+}
+
+.profile-btn {
+  color: #fff;
+  background: #851DFF;
+}
+
+.section-2 {
+  background: #f8f9fa;
+  border-radius: 1rem;
+}
+
+.section-4 {
+  border-radius: 1rem;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.profile-list {
+  margin-left: 20vw;
 }

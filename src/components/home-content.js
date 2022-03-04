@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import dj_icon from "../assets/img/dj-icon.png";
 import list_icon from "../assets/img/list-icon.png";
 import client_icon from "../assets/img/client-icon.png";
+import rated_dj_icon from "../assets/img/rated-dj-icon.png";
+import equipment_icon from "../assets/img/equipment-icon.png";
 import info_icon from "../assets/img/personal-info-icon.svg";
 import Usercard from "./usercard";
 
@@ -63,7 +65,7 @@ const HomeContent = () => (
     </div>
 
     {/* Section 2 */}
-    <div className="next-steps mb-4 pt-1 mt-5">
+    <div className="next-steps mb-4 pt-1 mt-5 section-2">
       <h2 className="my-5 text-center">Top Rated DJ's and Hosts</h2>
       <div className="row">
         <div className="col">
@@ -71,22 +73,31 @@ const HomeContent = () => (
         </div>
       </div>
 
-      {/* <img className="info-icon" src={info_icon} alt="Planning Icon" /> */}
+      <img className="rated-dj-icon" src={rated_dj_icon} alt="Planning Icon" />
     </div>
 
     {/* Section 3 */}
-    <div className="next-steps mb-4 pt-1 mt-5">
-      <h2 className="my-5 text-center">Top Rated Equipment Suppliers</h2>
+    <div className="next-steps mb-4 pt-1 mt-5 section-3">
+      <h2 className="my-5 text-center">Top Rated Equipment Suppliers *Possibility</h2>
 
       <div className="row">
         <div className="col">
-
+          <Usercard users={fakeUsers} />
         </div>
       </div>
 
-      <img className="info-icon" src={info_icon} alt="Planning Icon" />
+      <img className="equipment-icon" src={equipment_icon} alt="Planning Icon" />
     </div>
 
+    {/* Section 4 */}
+    <div className="mb-4 py-1 px-5 mt-5 bg-light section-4">
+      <h2 className="my-5 text-center">ESP Suggestions Module</h2>
+
+      <div className="row">
+        <div className="col">
+        </div>
+      </div>
+    </div>
 
   </>);
 
