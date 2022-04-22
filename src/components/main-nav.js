@@ -27,6 +27,14 @@ const MainNav = () => (
     >
       Profile
     </NavLink>
+    <NavLink
+      to="/event-planner"
+      exact
+      className="nav-link"
+      activeClassName="router-link-exact-active"
+    >
+      Event Planner
+    </NavLink>
     {/* <NavLink
       to="/external-api"
       exact

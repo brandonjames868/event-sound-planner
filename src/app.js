@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
-import ProtectedRoute from './auth/protected-route';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import ProtectedRoute from "./auth/protected-route";
 
-import { NavBar, Footer, Loading, DirectoryList, Details } from './components';
-import { Home, Profile, ExternalApi } from './views';
+import { NavBar, Footer, Loading, DirectoryList, Details } from "./components";
+import { Home, Profile, EventPlanner, UserForm } from "./views";
 
-import './app.css';
+import "./app.css";
 
 const App = () => {
   const { isLoading } = useAuth0();
@@ -23,8 +23,9 @@ const App = () => {
           <Route path="/" exact component={Home} />
           <Route path="/dj-list" component={DirectoryList} />
           <Route path="/dj/:id" component={Details} />
+          <ProtectedRoute path="/user-form" component={UserForm} />
           <ProtectedRoute path="/profile" component={Profile} />
-          {/* <ProtectedRoute path="/external-api" component={ExternalApi} /> */}
+          <Route path="/event-planner" component={EventPlanner} exact />
         </Switch>
       </div>
       <Footer />

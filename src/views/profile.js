@@ -6,6 +6,12 @@ const Profile = () => {
   const { user } = useAuth0();
   const { name, picture, email } = user;
 
+  // const payload = {
+  //   name: name,
+  //   picture: picture,
+  //   email: email,
+  // }
+
   return (
     <div>
       <div className="row align-items-center profile-header">
