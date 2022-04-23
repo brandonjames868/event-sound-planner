@@ -1,6 +1,7 @@
-# Easy User Authentication for React Apps
+# Event Sound Planner
 
-This repository hosts a React project that defines a Single-Page Application (SPA). You'll secure access to some of its routes using Auth0 User Authentication.
+This repository hosts the front-end application for the Event Sound Planner web app.
+The goal of this web application was to:
 
 ## Get Started
 
