@@ -25,9 +25,11 @@ const Home = () => {
       }
     }
   };
+
   useEffect(() => {
     checkUser();
   });
+
   return (
     <Fragment>
       <Hero />

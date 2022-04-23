@@ -2,60 +2,25 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-
+import Usercards from "./usercards";
+//import assets
 import dj_icon from "../assets/img/dj-icon.png";
 import list_icon from "../assets/img/list-icon.png";
 import client_icon from "../assets/img/client-icon.png";
 import rated_dj_icon from "../assets/img/rated-dj-icon.png";
 import equipment_icon from "../assets/img/equipment-icon.png";
 import info_icon from "../assets/img/personal-info-icon.svg";
-import Usercards from "./usercards";
 
-// const fakeUsers = [
-//   {
-//     id: 1,
-//     firstName: "Brandon",
-//     lastName: "James",
-//     email: "king_james@test.com",
-//     alias: "King James",
-//     image:
-//       "https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png",
-//   },
-//   {
-//     id: 2,
-//     firstName: "Trivelle",
-//     lastName: "Blake",
-//     email: "project_b@test.com",
-//     alias: "Project B",
-//     image:
-//       "https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png",
-//   },
-//   {
-//     id: 3,
-//     firstName: "Emmanuel",
-//     lastName: "Sammy",
-//     email: "jus_sammy@test.com",
-//     alias: "Jus Sammy",
-//     image:
-//       "https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png",
-//   },
-//   {
-//     id: 4,
-//     firstName: "Marcus",
-//     lastName: "Williams",
-//     email: "marcus@test.com",
-//     alias: "Marcus Williams",
-//     image:
-//       "https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png",
-//   },
-// ];
 
 const HomeContent = () => {
   const { loginWithRedirect } = useAuth0();
+
+  //set app state
   const [djs, setDjs] = useState([]);
   const [hosts, setHosts] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     //set loading state
     setLoading(true);
@@ -64,14 +29,16 @@ const HomeContent = () => {
     async function getDjs() {
       const { data } = await axios.get(
         process.env.REACT_APP_API_URL +
-          "/djs?pagination[start]=0&pagination[limit]=4&sort=likes:desc&filters[host][$eq]=false",
+        "/djs?pagination[start]=0&pagination[limit]=4&sort=likes:desc&filters[host][$eq]=false",
         {
           headers: {
             Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
           },
         }
       );
+      //add results to state
       setDjs(data.data);
+      //change loading state
       setLoading(false);
     }
 
@@ -79,24 +46,27 @@ const HomeContent = () => {
     async function getHosts() {
       const { data } = await axios.get(
         process.env.REACT_APP_API_URL +
-          "/djs?pagination[start]=0&pagination[limit]=4&sort=likes:desc&filters[host][$eq]=true",
+        "/djs?pagination[start]=0&pagination[limit]=4&sort=likes:desc&filters[host][$eq]=true",
         {
           headers: {
             Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
           },
         }
       );
+      //add results to state
       setHosts(data.data);
+      //change loading state
       setLoading(false);
     }
+
     // call functions
     getDjs();
     getHosts();
-  }, []);
+  }, []); //on page load
 
   return (
     <>
-      {/* Section 1 */}
+      {/* Section User Portals */}
       <div className="next-steps mb-4 pt-1">
         <h2 className="my-5 text-center">User Portals</h2>
 
@@ -152,11 +122,10 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-
         <img className="info-icon" src={info_icon} alt="Planning Icon" />
       </div>
 
-      {/* Section 2 */}
+      {/* Section 2: Popular DJs */}
       <div className="next-steps mb-4 pt-1 mt-5 section-2">
         <h2 className="my-5 text-center">Most Popular DJs</h2>
         <div className="row">
@@ -172,7 +141,7 @@ const HomeContent = () => {
         />
       </div>
 
-      {/* Section 3 */}
+      {/* Section 3: Popular Hosts */}
       <div className="next-steps mb-4 pt-1 mt-5 section-3">
         <h2 className="my-5 text-center">Most Popular Hosts</h2>
 
@@ -189,17 +158,9 @@ const HomeContent = () => {
         />
       </div>
 
-      {/* Section 4 */}
+      {/* Section 4: Footnote */}
       <div className="mb-4 py-1 px-5 mt-5 bg-light section-4">
-        <h2 className="my-5 text-center">ESP Suggestions Module</h2>
-        <h4 className="text-centre">
-          Click<a href="/dj-list"> here</a> to get suggested equipment for your
-          event
-        </h4>
-
-        <div className="row">
-          <div className="col"></div>
-        </div>
+        <h2 className="my-5 text-center">Top Rated Equipment Suppliers <br /> COMING SOON!</h2>
       </div>
     </>
   );

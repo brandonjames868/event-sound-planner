@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ProtectedRoute from "./auth/protected-route";
 
 import { NavBar, Footer, Loading, DirectoryList, Details } from "./components";
-import { Home, Profile, EventPlanner, UserForm } from "./views";
+import { Home, Profile, EventPlanner, UserForm, BookingForm } from "./views";
 
 import "./app.css";
 
@@ -21,11 +21,12 @@ const App = () => {
       <div className="container flex-grow-1">
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/event-planner" component={EventPlanner} exact />
           <Route path="/dj-list" component={DirectoryList} />
           <Route path="/dj/:id" component={Details} />
           <ProtectedRoute path="/user-form" component={UserForm} />
           <ProtectedRoute path="/profile" component={Profile} />
-          <Route path="/event-planner" component={EventPlanner} exact />
+          <Route path="/booking-form" component={BookingForm} exact />
         </Switch>
       </div>
       <Footer />

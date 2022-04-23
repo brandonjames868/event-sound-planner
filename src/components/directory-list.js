@@ -29,27 +29,31 @@ const DirectoryList = () => {
 
   const handleSearch = async () => {
     try {
+      //get data and filter using rest api
       const { data } = await axios.get(
         process.env.REACT_APP_API_URL +
-          "/djs?filters[$or][0][stagename][$containsi]=" +
-          search +
-          "&filters[$or][1][firstname][$containsi]=" +
-          search +
-          "&filters[$or][2][lastname][$containsi]=" +
-          search,
+        "/djs?filters[$or][0][stagename][$containsi]=" +
+        search +
+        "&filters[$or][1][firstname][$containsi]=" +
+        search +
+        "&filters[$or][2][lastname][$containsi]=" +
+        search,
         {
           headers: {
             Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
           },
         }
       );
+
+      //set state to results
       setDjs(data.data);
     } catch (e) {
+      //log error
       console.log(e);
     }
   };
 
-  // handle search
+  // handle search and monitor for changes in search field
   useEffect(() => {
     handleSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,7 +73,7 @@ const DirectoryList = () => {
         />
       </div>
 
-      <div className="row my-5">
+      <div className="row my-5" custom-dir-container>
         {djs && djs.map((user) => <DirectoryItem user={user} key={user.id} />)}
       </div>
     </div>

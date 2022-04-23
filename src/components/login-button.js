@@ -8,7 +8,7 @@ const LoginButton = () => {
             className="btn btn-success btn-block login-btn rounded shadow"
             onClick={() => loginWithRedirect()}
         >
-            Log In
+            Log In/Register
         </button>
     );
 };

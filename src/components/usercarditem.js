@@ -2,6 +2,10 @@ import React from "react";
 
 const Usercarditem = ({ user }) => {
   const { attributes } = user;
+  const view = (user) => {
+    window.localStorage.setItem("user", JSON.stringify(user));
+    window.location.href = "/dj/" + user.id;
+  };
   return (
     <div className="col-sm-3 text-center">
       <div className="card text-white bg-dark mb-3 tr-dj-card">
@@ -18,10 +22,16 @@ const Usercarditem = ({ user }) => {
             ></img>
           </div>
           <h5 className="card-title">{attributes.stagename}</h5>
+          <p className="card-text">
+            Rate:{" "}
+            {attributes.rate !== null ? "$" + attributes.rate + "USD/hr" : "-"}
+          </p>
           <p className="card-text">Likes: {attributes.likes}</p>
           <button
             className="btn btn-primary profile-btn rounded"
-            onClick={() => (window.location.href = "/djs/" + user.id)}
+            onClick={() => {
+              view(user);
+            }}
           >
             View Profile
           </button>

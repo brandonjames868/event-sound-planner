@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const UserForm = () => {
   const { user, isAuthenticated } = useAuth0();
+  //form data stored to app state
   const [form, setForm] = useState({
     email: user.email,
     firstname: user.given_name,
@@ -14,10 +15,14 @@ const UserForm = () => {
     bio: "",
     stagename: "",
     likes: 0,
+    rate: 0.00
   });
 
+  //creates a user in backend
   const createUser = async (e) => {
+    //prevent default form action
     e.preventDefault();
+
     if (isAuthenticated) {
       // proceed to create user
       try {
@@ -32,6 +37,8 @@ const UserForm = () => {
             },
           }
         );
+
+        //if request successful
         if (data.status === 200) {
           window.location.href = "/profile";
         } else {
@@ -40,9 +47,10 @@ const UserForm = () => {
           );
         }
       } catch (e) {
+        //console error message
         console.log(e);
       }
-    } else {
+    } else { //user not logged in
       alert(
         "There was an error completing your registration please login and try again"
       );
@@ -162,6 +170,24 @@ const UserForm = () => {
               setForm({
                 ...form,
                 stagename: e.target.value,
+              });
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <label for="last-name">Hourly Rate (/hr) USD </label>
+          <input
+            type="number"
+            className="form-control"
+            id="hourly-rate"
+            placeholder="250.00"
+            required
+            value={form.rate}
+            onChange={(e) => {
+              setForm({
+                ...form,
+                rate: e.target.value,
               });
             }}
           />
