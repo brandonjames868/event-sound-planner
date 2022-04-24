@@ -1,7 +1,6 @@
 # Event Sound Planner
 
 This repository hosts the front-end application for the Event Sound Planner web app.
-The goal of this web application was to:
 
 ## Get Started
 

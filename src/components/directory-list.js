@@ -73,7 +73,7 @@ const DirectoryList = () => {
         />
       </div>
 
-      <div className="row my-5" custom-dir-container>
+      <div className="row my-5 custom-dir-container">
         {djs && djs.map((user) => <DirectoryItem user={user} key={user.id} />)}
       </div>
     </div>

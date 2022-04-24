@@ -5,20 +5,21 @@ import { useState } from "react";
 const BookingForm = () => {
   //get dj object from local storage persisting from details component
   const dj =
-    window.localStorage.getItem("user") !== null ||
-    window.localStorage.getItem("user") !== "null"
-      ? JSON.parse(window.localStorage.getItem("user"))
+    window.localStorage.getItem("bookDj") !== null ||
+      window.localStorage.getItem("bookDj") !== "null"
+      ? JSON.parse(window.localStorage.getItem("bookDj"))
       : null;
 
+  console.log(dj);
   //form data stored to app state
   const [form, setForm] = useState({
-    dj_id: dj.id,
-    email: "",
-    name: "",
-    contact: "",
-    date: "",
-    location: "",
-    info: "",
+    email: "person@mail.com",
+    name: "John Doe",
+    contact: "(868) 123-4567",
+    date: "This Friday at 8pm",
+    hours: 1,
+    location: "Port-of-Spain",
+    info: "No additional info",
     related_dj: dj.id,
   });
 
@@ -29,6 +30,7 @@ const BookingForm = () => {
 
     //try to update specific dj bookings in backend
     try {
+      console.log(form);
       const data = await axios.post(
         process.env.REACT_APP_API_URL + "/bookings",
         {
@@ -54,6 +56,7 @@ const BookingForm = () => {
     } catch (e) {
       //console error message
       console.log(e);
+      alert("There was an issue completing your booking.");
     }
   };
 
@@ -65,8 +68,8 @@ const BookingForm = () => {
         contact you at their earliest convenience.
       </p>
       <form className="container" onSubmit={bookUser}>
-        <div class="form-group">
-          <label for="InputEmail">Email address</label>
+        <div className="form-group">
+          <label htmlFor="InputEmail">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -85,7 +88,7 @@ const BookingForm = () => {
         </div>
 
         <div className="form-group">
-          <label for="last-name">Name</label>
+          <label htmlFor="last-name">Name</label>
           <input
             type="text"
             className="form-control"
@@ -103,7 +106,7 @@ const BookingForm = () => {
         </div>
 
         <div className="form-group">
-          <label for="last-name">Contact Number</label>
+          <label htmlFor="last-name">Contact Number</label>
           <input
             type="text"
             className="form-control"
@@ -120,7 +123,7 @@ const BookingForm = () => {
         </div>
 
         <div className="form-group">
-          <label for="last-name">Booking Dates</label>
+          <label htmlFor="last-name">Booking Dates</label>
           <div className="pt-0">
             <small>Please enter the date along with time.</small>
           </div>
@@ -140,30 +143,46 @@ const BookingForm = () => {
         </div>
 
         <div className="form-group">
-          <label for="last-name">Booking Location</label>
+          <label htmlFor="last-name">Booking Location</label>
           <input
             type="text"
             className="form-control"
             id="dates"
             placeholder="Bain Avenue, Santa Cruz"
-            value={form.date}
+            value={form.location}
             onChange={(e) => {
               setForm({
                 ...form,
-                date: e.target.value,
+                location: e.target.value,
               });
             }}
           />
         </div>
 
         <div className="form-group">
-          <label for="Bio">Additional Information</label>
+          <label htmlFor="hours">Hours</label>
+          <input
+            type="number"
+            className="form-control"
+            id="hours"
+            placeholder="1"
+            value={form.hours}
+            onChange={(e) => {
+              setForm({
+                ...form,
+                hours: e.target.value,
+              });
+            }}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="Bio">Additional Information</label>
           <textarea
             className="form-control"
             name="info"
             id="addInfo"
             placeholder="Enter any additional details about the booking here."
-            required
             value={form.info}
             onChange={(e) => {
               setForm({

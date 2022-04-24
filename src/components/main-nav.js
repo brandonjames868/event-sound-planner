@@ -19,14 +19,7 @@ const MainNav = () => (
     >
       Directory
     </NavLink>
-    <NavLink
-      to="/profile"
-      exact
-      className="nav-link"
-      activeClassName="router-link-exact-active"
-    >
-      Profile
-    </NavLink>
+
     <NavLink
       to="/event-planner"
       exact
@@ -35,14 +28,14 @@ const MainNav = () => (
     >
       Event Planner
     </NavLink>
-    {/* <NavLink
-      to="/external-api"
+    <NavLink
+      to="/bookings"
       exact
       className="nav-link"
       activeClassName="router-link-exact-active"
     >
-      External API
-    </NavLink> */}
+      Bookings
+    </NavLink>
   </div>
 );
 
